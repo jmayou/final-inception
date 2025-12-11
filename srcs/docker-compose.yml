@@ -6,13 +6,6 @@ services:
     container_name: mariadb
     env_file:
       - .env
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - WP_ADMIN_USER=${WP_ADMIN_USER}
-      - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
     volumes:
       - /home/jmayou/data/mariadb:/var/lib/mysql
     networks:
@@ -27,7 +20,7 @@ services:
     pull_policy: never
     container_name: wordpress
     env_file:
-      - .env~
+      - .env
     depends_on:
       - mariadb
     volumes:
